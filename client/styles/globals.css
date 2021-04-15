@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .button {
+    @apply inline-block text-xs font-bold text-center uppercase border rounded;
+  }
+  .button.full {
+    @apply bg-green-500 border-green-500 text-gray-50;
+  }
+  .button.full:hover {
+    @apply bg-green-300 border-green-300;
+  }
+  .button.hollow {
+    @apply text-green-500 bg-transparent border-green-500;
+  }
+  .button.hollow:hover {
+    @apply text-green-300 border-green-300;
+  }
+}
