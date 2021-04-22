@@ -98,7 +98,7 @@ const Navbar: React.FC = () => {
                   key={sub.name}
                   href={`/r/${sub.name}`}
                   className="flex items-center px-4 py-2 hover:bg-gray-200"
-                  onClick={(e) => {
+                  onMouseDown={(e) => {
                     e.preventDefault();
                     goToSub(sub.name);
                   }}
