@@ -53,7 +53,6 @@ const register = async (req: Request, res: Response) => {
 
 const login = async (req: Request, res: Response) => {
   const { username, password } = req.body;
-  console.log(username);
 
   try {
     let errors: any = {};
