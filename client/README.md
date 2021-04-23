@@ -1,34 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# The Next.js Frontend Server
 
-## Getting Started
+## Technologies used
 
-First, run the development server:
+- **React.js** to enable making a powerful component based website
+- **Next.js** for the ease of deployment and to have server side rendering and client rendering at the same time
+- **TailwindCSS** for the styling
+- **Axios** for the POST http requests
+- **SWR** for data fetching, it enables
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## File structure
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+The file structure follows the strict structure of a **Next.js** project, you can read more about it in their [documentation](https://nextjs.org/docs/getting-started) if you're interested.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+---
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Interestings things
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+As the front end is not the focus of the project and it's harder to give a clear idea of how it works if you're not already familiar with **React.js** and **Next.js**, i will instead talk about some small things that make it interesting
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- The use of **SWR** to fetch data.<br/>
+  **SWR** is a very neat data fetching library that is derived from the HTTP cache invalidation strategy `stale-while-revalidate`.<br/>
+  I used it to limit the amount of api requests by for example, limit the data revalidating to once every minute.<br/>
+  In practice this means that if you go from the front page to an other page and then back to the front page in less than a minute, the front page will not revalidate it's data, but if you take an action, like upvote a post, it forces a data revalidation, so you still see things change.<br/>
+  I also used it, on the front page, to do a continuous fetch of the posts, it first loads a fixed amount of the most recent posts, and when the user scrolls down to the bottom, load that much more posts, until all of the posts have been loaded.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- The use of **Next.js** to hide pages to unauthaurized users through server side rendering while still rendering on the client the pages that have no restrictions.<br/>
+  **Next.js** allows the use of the function `getServerSideProps` which tells **Next.js** to render that page on the server.<br/>
+  I used it to hide to unauthenticated users the pages [create.tsx](https://github.com/hugo-blanchard/reddit-clone/blob/main/client/pages/subs/create.tsx) which is the sub creation page and [submit.tsx](https://github.com/hugo-blanchard/reddit-clone/blob/main/client/pages/r/%5BsubName%5D/submit.tsx) which is the post creation page.<br/>
+  You can see at the bottom of the two pages mentioned above the implementation of the `getServerSideProps` function.
