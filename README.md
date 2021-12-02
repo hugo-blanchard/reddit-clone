@@ -2,12 +2,9 @@
 
 ## Where to see the deployed website ?
 
-You can access the website at http://138.68.142.169/
+<s>You can access the website at http://138.68.142.169/</s>
 
-Be careful, i did not setup the https so **do not use your real password on it**.<br/>
-
-Please keep it civil and safe for work, there is no automated moderation  
-so i will have to take the site down if things get out of hand
+Edit: not anymore, the cost of keeping it online was not worth it, and it's not a good representation of my skill anymore. I'll work on some much more interesting projects that i will keep online when i have the time (:
 
 ## Why was this website built ?
 
